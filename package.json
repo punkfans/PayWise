@@ -1,0 +1,15 @@
+{
+  "name": "cash-back-smarty",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.4"
+  },
+  "devDependencies": {}
+}
