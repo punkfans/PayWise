@@ -3,7 +3,7 @@
         .directive('result', function() {
             return {
                 restrict: 'E',
-                templateUrl: 'result.html'
+                templateUrl: 'src/result/result.html'
             }
         });
 })();
