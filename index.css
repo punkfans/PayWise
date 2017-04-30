@@ -1,3 +1,7 @@
+div.app-container {
+    min-width: 400px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -17,6 +21,10 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none!important;
+}
+
+li a:active {
+    background-color: darkgreen;
 }
 
 li a:hover {

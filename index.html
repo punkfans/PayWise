@@ -12,19 +12,22 @@
 		<script src="./node_modules/angular-aria/angular-aria.min.js"></script>
 		<script src="./node_modules/angular-messages/angular-messages.min.js"></script>
 		<script src="./node_modules/angular-material/angular-material.min.js"></script>
+		<script src="./node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 
 		<script src="./app.js"></script>
 		<script src="src/result/result.directive.js"></script>
 	</head>
 	<body ng-app="app" ng-controller="main">
-		<div class="nav-bar-container">
-			<ul class="col-sm-12">
-				<li class="col-sm-4"><a href="#/result">Result</a></li>
-				<li class="col-sm-4"><a href="#/myCard">My Cards</a></li>
-				<li class="col-sm-4"><a href="#/feedBack">Feed Back</a></li>
-			</ul>
+		<div class="app-container">
+			<div class="nav-bar-container">
+				<ul class="col-sm-12">
+					<li class="col-sm-4"><a href="#/result">Result</a></li>
+					<li class="col-sm-4"><a href="#/myCard">My Cards</a></li>
+					<li class="col-sm-4"><a href="#/feedBack">Feed Back</a></li>
+				</ul>
+			</div>
+			<ng-view></ng-view>
 		</div>
-		<ng-view></ng-view>
 		<script src="node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	</body>

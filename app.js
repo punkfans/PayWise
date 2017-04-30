@@ -1,5 +1,5 @@
 (function() {
-    angular.module('app', ['ngRoute'])
+    angular.module('app', ['ngRoute', 'ngSanitize'])
         .config(configFunction)
         .controller('main', mainController);
 
@@ -14,6 +14,9 @@
             })
             .when('/feedBack', {
                 templateUrl: 'src/feedBack/feedBack.html'
+            })
+            .otherwise({
+                redirectTo: '/result'
             });
 
         //fix hash-bang issue for angular 1.6
@@ -23,7 +26,5 @@
     mainController.$inject = ['$scope'];
     function mainController($scope) {
         var vm = this;
-
-        $scope.currentNavItem = 'page1';
     }
 })();
