@@ -2,10 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
+		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="index.css">
 		<title>Title</title>
 
 		<script src="node_modules/angular/angular.min.js"></script>
+		<script src="node_modules/angular-route/angular-route.min.js"></script>
 		<script src="./node_modules/angular-animate/angular-animate.min.js"></script>
 		<script src="./node_modules/angular-aria/angular-aria.min.js"></script>
 		<script src="./node_modules/angular-messages/angular-messages.min.js"></script>
@@ -15,27 +17,15 @@
 		<script src="src/result/result.directive.js"></script>
 	</head>
 	<body ng-app="app" ng-controller="main">
-		<div ng-cloak>
-			<md-content class="md-padding">
-				<md-nav-bar
-						md-selected-nav-item="currentNavItem"
-						nav-bar-aria-label="navigation links">
-					<md-nav-item md-nav-click="goto('result')" name="result">
-						Result
-					</md-nav-item>
-					<md-nav-item md-nav-click="goto('myCards')" name="myCards">
-						My Cards
-					</md-nav-item>
-					<md-nav-item md-nav-click="goto('feedBack')" name="feedBack">
-						Feed Back
-					</md-nav-item>
-				</md-nav-bar>
-				<div class="ext-content">
-					<result></result>
-					External content for `<span>{{currentNavItem}}</span>`.
-				</div>
-
-			</md-content>
+		<div class="nav-bar-container">
+			<ul class="col-sm-12">
+				<li class="col-sm-4"><a href="#/result">Result</a></li>
+				<li class="col-sm-4"><a href="#/myCard">My Cards</a></li>
+				<li class="col-sm-4"><a href="#/feedBack">Feed Back</a></li>
+			</ul>
 		</div>
+		<ng-view></ng-view>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	</body>
 </html>
