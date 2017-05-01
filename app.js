@@ -3,7 +3,7 @@
         .config(configFunction)
         .controller('main', mainController);
 
-    function configFunction($routeProvider, $locationProvider) {
+    function configFunction($routeProvider, $locationProvider, $compileProvider) {
         $routeProvider
             .when('/result', {
                 templateUrl: 'src/result/result.html',
@@ -21,6 +21,9 @@
 
         //fix hash-bang issue for angular 1.6
         $locationProvider.hashPrefix('');
+
+        //for chrome extension to get external img
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
     }
 
     mainController.$inject = ['$scope'];

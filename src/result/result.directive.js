@@ -14,8 +14,8 @@
 
         $scope.cardStatus = [];
 
-        $scope.showCard = function(index) {
-            return $scope.cardStatus[index];
+        $scope.openTab = function(cardUrl) {
+            chrome.tabs.create({ url: cardUrl });
         };
 
         getDomain()

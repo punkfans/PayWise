@@ -10,7 +10,17 @@
         <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
                 {{card.reward}}
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object card-image" src="{{::card.card_img}}" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <h4 ng-click="openTab(card.card_url)" class="media-heading card-url-link">{{::card.card_name}}</h4>
+                        asdasdsadasdasd
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<!--todo add a fire icon indicating the best choice-->

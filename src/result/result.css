@@ -1,0 +1,8 @@
+img.card-image {
+    width: 130px;
+}
+
+h4.card-url-link:hover {
+    color: deepskyblue;
+    cursor: pointer;
+}
