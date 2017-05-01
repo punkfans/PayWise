@@ -1,5 +1,5 @@
 (function() {
-    angular.module('app', ['ngRoute', 'ngSanitize'])
+    angular.module('app', ['ngRoute'])
         .config(configFunction)
         .controller('main', mainController);
 

@@ -1,3 +1,16 @@
-<div>my result!</div>
-<pre>{{domain}}</pre>
-<pre>{{cards}}</pre>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default" ng-repeat="card in cards">
+        <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
+            <h4 class="panel-title">
+                <a class="collapsed" ng-click="test()" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+                    Collapsible Group Item {{$index}}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                {{card.reward}}
+            </div>
+        </div>
+    </div>
+</div>
