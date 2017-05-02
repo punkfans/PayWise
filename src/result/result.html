@@ -1,22 +1,27 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default" ng-repeat="card in cards">
+    <div class="panel panel-default" ng-repeat="card in dataService.cards">
         <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
             <h4 class="panel-title">
-                <a class="collapsed" ng-click="test()" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
-                    Collapsible Group Item {{$index}}
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+                    {{card.reward | percentage}} {{::card.card_name}}
                 </a>
+                <!--TODO: adding a card as favorite?-->
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </h4>
         </div>
-        <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
+        <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : dataService.cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                {{card.reward}}
                 <div class="media">
                     <div class="media-left">
                         <img class="media-object card-image" src="{{::card.card_img}}" alt="...">
                     </div>
                     <div class="media-body">
                         <h4 ng-click="openTab(card.card_url)" class="media-heading card-url-link">{{::card.card_name}}</h4>
-                        asdasdsadasdasd
+                        <div>
+                            <ul class="rewards-desc">
+                                <li ng-repeat="reward in card.rewards_desc">{{reward}}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

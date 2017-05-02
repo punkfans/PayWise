@@ -6,3 +6,18 @@ h4.card-url-link:hover {
     color: deepskyblue;
     cursor: pointer;
 }
+
+a {
+    text-decoration: none!important;
+}
+
+ul.rewards-desc {
+    background-color: transparent;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul.rewards-desc li {
+    display: list-item;
+    margin-bottom: 5px;
+}

@@ -9,32 +9,36 @@
         })
         .controller('resultController', resultController);
 
-    resultController.$inject = ['$scope', '$q'];
-    function resultController($scope, $q) {
+    resultController.$inject = ['$scope', '$q', 'dataService'];
+    function resultController($scope, $q, dataService) {
 
-        $scope.cardStatus = [];
+        $scope.dataService = dataService;
 
         $scope.openTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
         };
 
-        getDomain()
-            .then(function(domain) {
-                //TODO: use dynamic user_id instead of hard coding
-                return getResult('10001', domain);
-            })
-            .then(function(cards) {
-                cards.sort(function(card1, card2) {
-                    return card2 - card1;
+        //http call only happens when the page loads for the first time
+        if(!dataService.result) {
+            getDomain()
+                .then(function(domain) {
+                    //TODO: use dynamic user_id instead of hard coding
+                    return getResult('10001', domain);
+                })
+                .then(function(cards) {
+                    cards.sort(function(card1, card2) {
+                        return card2 - card1;
+                    });
+
+                    determineShownCardIndex(cards);
+
+                    $scope.dataService.cards = cards;
+                })
+                .catch(function(error) {
+                    //there is an error during getting results
+                    console.log(error)
                 });
-
-                determineShownCardIndex(cards);
-
-                $scope.cards = cards;
-            })
-            .catch(function(error) {
-                console.log(error)
-            });
+        }
 
         function getDomain() {
             var defer = $q.defer();
@@ -63,9 +67,14 @@
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
             xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
                     var resp = JSON.parse(xhr.responseText);
-                    defer.resolve(resp);
+                    if(resp.errorMessage) {
+                        //TODO: refine the error msg to differentiate reason and show different page
+                        defer.reject(resp.errorMessage);
+                    }else {
+                        defer.resolve(resp);
+                    }
                 }
             };
             xhr.send();
@@ -79,7 +88,7 @@
             });
 
             for(var i=0; i<valueArray.length; i++) {
-                $scope.cardStatus.push(valueArray[i] === valueArray[0]);
+                $scope.dataService.cardStatus.push(valueArray[i] === valueArray[0]);
             }
         }
     }
