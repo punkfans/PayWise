@@ -19,7 +19,7 @@
         };
 
         //http call only happens when the page loads for the first time
-        if(!dataService.result) {
+        if(!dataService.cards) {
             getDomain()
                 .then(function(domain) {
                     //TODO: use dynamic user_id instead of hard coding
@@ -32,7 +32,7 @@
 
                     determineShownCardIndex(cards);
 
-                    $scope.dataService.cards = cards;
+                    dataService.cards = cards;
                 })
                 .catch(function(error) {
                     //there is an error during getting results
@@ -88,7 +88,7 @@
             });
 
             for(var i=0; i<valueArray.length; i++) {
-                $scope.dataService.cardStatus.push(valueArray[i] === valueArray[0]);
+                dataService.cardStatus.push(valueArray[i] === valueArray[0]);
             }
         }
     }
