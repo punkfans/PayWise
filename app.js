@@ -6,14 +6,14 @@
     function configFunction($routeProvider, $locationProvider, $compileProvider) {
         $routeProvider
             .when('/result', {
-                templateUrl: 'src/result/result.html',
+                templateUrl: 'src/components/result/result.html',
                 controller: 'resultController'
             })
             .when('/myCard', {
-                templateUrl: 'src/myCard/myCard.html'
+                templateUrl: 'src/components/myCard/myCard.html'
             })
             .when('/feedBack', {
-                templateUrl: 'src/feedBack/feedBack.html'
+                templateUrl: 'src/components/feedBack/feedBack.html'
             })
             .otherwise({
                 redirectTo: '/result'
