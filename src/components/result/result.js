@@ -1,12 +1,5 @@
 (function() {
     angular.module('app')
-        .directive('result', function() {
-            return {
-                restrict: 'E',
-                templateUrl: 'src/result/result.html',
-                controller: 'resultController'
-            }
-        })
         .controller('resultController', resultController);
 
     resultController.$inject = ['$scope', '$q', 'dataService'];
@@ -17,6 +10,16 @@
         $scope.openTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
         };
+
+        if(!dataService.userId) {
+            getUserId()
+                .then(function() {
+                    console.log(dataService.userId);
+                    if(!dataService.userId) {
+                        setUserId();
+                    }
+                })
+        }
 
         //http call only happens when the page loads for the first time
         if(!dataService.cards) {
@@ -38,6 +41,32 @@
                     //there is an error during getting results
                     console.log(error)
                 });
+        }
+
+        //for dev only, to clear the chrome storage
+        function clearChromeStorage() {
+            chrome.storage.sync.set({'userId': ''}, function() {
+                dataService.userId = '';
+                console.log(dataService.userId);
+            });
+        }
+
+        function getUserId() {
+            var defer = $q.defer();
+            chrome.storage.sync.get('userId', function(userIdObj) {
+                dataService.userId = userIdObj.userId;
+                defer.resolve();
+            });
+
+            return defer.promise;
+        }
+
+        function setUserId() {
+            var id = Math.floor(Math.random()*90000) + 10000;
+            chrome.storage.sync.set({'userId': id}, function() {
+                console.log('saved!');
+                dataService.userId = id;
+            });
         }
 
         function getDomain() {

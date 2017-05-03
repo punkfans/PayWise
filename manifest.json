@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Cash Back Smarty Chrome Extension",
+  "name": "Pay Wise",
   "description": "This extension shows which card you should use to get max cash back",
   "version": "0.1",
 
@@ -12,6 +12,7 @@
   "content_security_policy": "script-src 'self' https://*.amazonaws.com/dev/*;object-src 'self'",
   "permissions": [
     "tabs",
+    "storage",
     "activeTab",
     "https://ajax.googleapis.com/",
     "https://*/*"

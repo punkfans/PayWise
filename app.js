@@ -10,10 +10,12 @@
                 controller: 'resultController'
             })
             .when('/myCard', {
-                templateUrl: 'src/components/myCard/myCard.html'
+                templateUrl: 'src/components/myCard/myCard.html',
+                controller: 'myCardsController'
             })
             .when('/feedBack', {
-                templateUrl: 'src/components/feedBack/feedBack.html'
+                templateUrl: 'src/components/feedBack/feedBack.html',
+                controller: 'feedBackController'
             })
             .otherwise({
                 redirectTo: '/result'
