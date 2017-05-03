@@ -7,5 +7,9 @@
 
     function myCardsController($scope, dataService) {
         $scope.dataService = dataService;
+
+        $scope.openNewTab = function(cardUrl) {
+            chrome.tabs.create({ url: cardUrl });
+        };
     }
 })();

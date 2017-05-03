@@ -1,0 +1,17 @@
+div.my-card-container {
+    display: inline-block;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+div.my-card-container h5:hover{
+    color: deepskyblue;
+    cursor: pointer;
+}
+
+div.my-card-container img.card-image {
+    width: 80px;
+    margin: auto;
+    display: block;
+}

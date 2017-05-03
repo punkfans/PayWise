@@ -7,7 +7,7 @@
 
         $scope.dataService = dataService;
 
-        $scope.openTab = function(cardUrl) {
+        $scope.openNewTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
         };
 
