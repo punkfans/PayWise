@@ -6,7 +6,7 @@
   "version": "0.1",
 
   "browser_action": {
-    "default_icon": "dollarSign.png",
+    "default_icon": "./images/dollarSign.png",
     "default_popup": "index.html"
   },
   "content_security_policy": "script-src 'self' https://*.amazonaws.com/dev/*;object-src 'self'",

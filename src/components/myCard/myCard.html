@@ -1,6 +1,16 @@
-<div class="my-card-container" ng-repeat="card in dataService.cards">
-    <img class="card-image" src="{{::card.card_img}}">
-    <h5 ng-click="openNewTab(card.card_url)">
-        {{::card.card_name}}
-    </h5>
+<div>
+    <div class="my-card-container" ng-repeat="card in dataService.cards">
+        <img class="card-image" src="{{::card.card_img}}">
+        <h5 ng-click="openNewTab(card.card_url)">
+            {{::card.card_name}}
+        </h5>
+    </div>
+
+    <!--TODO add animation when hover over the div, plus icon become larger and background blur-->
+    <div class="my-card-container">
+        <div class="add-card-container">
+            <img class="add-card-image" src="../../../images/plugSing.png">
+            <h5>Add</h5>
+        </div>
+    </div>
 </div>

@@ -1,8 +1,9 @@
 div.my-card-container {
     display: inline-block;
-    float: left;
     width: 33%;
     text-align: center;
+    min-height: 100px;
+    float: left;
 }
 
 div.my-card-container h5:hover{
@@ -12,6 +13,31 @@ div.my-card-container h5:hover{
 
 div.my-card-container img.card-image {
     width: 80px;
+    height: 50px;
     margin: auto;
     display: block;
+}
+
+div.add-card-container img{
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+}
+
+div.add-card-container {
+    width: 80px;
+    height: 50px;
+    margin: auto;
+    display: block;
+    background-color: lightgrey;
+    border-radius: 3px;
+}
+
+div.add-card-container h5{
+    margin-top: 3px;
+}
+
+div.add-card-container h5:hover{
+    color: black;
+    cursor: default;
 }

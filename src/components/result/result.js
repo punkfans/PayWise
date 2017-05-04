@@ -29,9 +29,6 @@
                     return getResult('10001', domain);
                 })
                 .then(function(cards) {
-                    cards.sort(function(card1, card2) {
-                        return card2 - card1;
-                    });
 
                     determineShownCardIndex(cards);
 
@@ -51,10 +48,21 @@
             });
         }
 
+        //generating UUID as user_id
+        function getUUID() {
+            var s4 = function() {
+                return Math.floor((1+Math.random())*0x10000).toString(16).substring(1);
+            };
+
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+        }
+
         function getUserId() {
             var defer = $q.defer();
             chrome.storage.sync.get('userId', function(userIdObj) {
                 dataService.userId = userIdObj.userId;
+                //for clear user_id, dev only!
+                //clearChromeStorage();
                 defer.resolve();
             });
 
@@ -62,7 +70,7 @@
         }
 
         function setUserId() {
-            var id = Math.floor(Math.random()*90000) + 10000;
+            id = getUUID();
             chrome.storage.sync.set({'userId': id}, function() {
                 console.log('saved!');
                 dataService.userId = id;
