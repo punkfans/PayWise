@@ -8,9 +8,13 @@
 
     <!--TODO add animation when hover over the div, plus icon become larger and background blur-->
     <div class="my-card-container">
-        <div class="add-card-container">
+        <div class="add-card-container" ng-click="toggleEditMode()">
             <img class="add-card-image" src="../../../images/plugSing.png">
             <h5>Add</h5>
         </div>
+    </div>
+
+    <div class="auto-complete-container" ng-if="editMode" >
+        <auto-complete data="dataService.allCards"></auto-complete>
     </div>
 </div>

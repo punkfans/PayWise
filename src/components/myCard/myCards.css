@@ -33,6 +33,10 @@ div.add-card-container {
     border-radius: 3px;
 }
 
+div.add-card-container:hover{
+    cursor: pointer;
+}
+
 div.add-card-container h5{
     margin-top: 3px;
 }
@@ -40,4 +44,8 @@ div.add-card-container h5{
 div.add-card-container h5:hover{
     color: black;
     cursor: default;
+}
+
+div.auto-complete-container {
+    clear: both;
 }
