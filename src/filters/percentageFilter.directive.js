@@ -6,7 +6,7 @@
             return function(input) {
                 input = input || '';
 
-                return input * 100 + '%';
+                return input + '%';
             }
         });
 })();

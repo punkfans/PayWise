@@ -53,3 +53,7 @@ div.add-card-container h5:hover{
 div.auto-complete-container {
     clear: both;
 }
+
+div.button-container {
+    padding: 0 10px 10px 10px;
+}

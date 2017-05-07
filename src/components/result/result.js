@@ -11,6 +11,7 @@
             chrome.tabs.create({ url: cardUrl });
         };
 
+        //get user_id, set it if there is no user_id
         if(!dataService.userId) {
             getUserId()
                 .then(function() {
@@ -21,24 +22,21 @@
                 })
         }
 
-        //http call only happens when the page loads for the first time
-        if(!dataService.cards) {
-            getDomain()
-                .then(function(domain) {
-                    //TODO: use dynamic user_id instead of hard coding
-                    return getResult('10001', domain);
-                })
-                .then(function(cards) {
+        getDomain()
+            .then(function(domain) {
+                //TODO: use dynamic user_id instead of hard coding
+                return getResult('10001', domain);
+            })
+            .then(function(cards) {
 
-                    determineShownCardIndex(cards);
+                determineShownCardIndex(cards);
 
-                    dataService.cards = cards;
-                })
-                .catch(function(error) {
-                    //there is an error during getting results
-                    console.log(error)
-                });
-        }
+                dataService.cards = cards;
+            })
+            .catch(function(error) {
+                //there is an error during getting results
+                console.log(error)
+            });
 
         //for dev only, to clear the chrome storage
         function clearChromeStorage() {
@@ -120,6 +118,7 @@
         }
 
         function determineShownCardIndex(cards) {
+            dataService.cardStatus = [];
             var valueArray = cards.map(function(card) {
                 return card.reward;
             });
