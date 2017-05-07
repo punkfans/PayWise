@@ -22,7 +22,6 @@
             $http.get('https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/cards')
                 .then(function(response) {
                     dataService.allCards = response.data;
-                    console.log('all card loaded', dataService.allCards)
                 })
                 .catch(function(error) {
                     console.log(error);

@@ -1,3 +1,7 @@
+div.my-card {
+    margin-top: 20px;
+}
+
 div.my-card-container {
     display: inline-block;
     width: 33%;

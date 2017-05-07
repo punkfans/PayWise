@@ -1,13 +1,22 @@
-<form>
+<form id="autoCompleteForm" autocomplete="off">
     <div class="form-group">
-        <label for="addCard">Please add your card</label>
-        <input name="addCardForm" ng-disabled="!data" type="text" class="form-control" id="addCard" placeholder="">
+        <label for="addCard">{{label}}</label>
+        <input name="addCardForm"
+               ng-model="dataService.addedCard"
+               ng-disabled="!data"
+               type="text"
+               class="form-control"
+               id="addCard"
+               ng-blur="onBlur()">
     </div>
-    <div class="list-group">
-        <button type="button" class="list-group-item">Cras justo odio</button>
-        <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-        <button type="button" class="list-group-item">Morbi leo risus</button>
-        <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-        <button type="button" class="list-group-item">Vestibulum at eros</button>
+    <div class="list-group" ng-if="showResults">
+        <a ng-repeat="result in resultToShow"
+           type="button"
+           class="list-group-item"
+           ng-mousedown="selectItem($index)"
+           ng-class="{'active': avtiveItemIndex === $index}"
+           ng-mouseover="setActiveItem($index)">
+        {{result}}</a>
+        <a class="list-group-item" ng-if="resultToShow.length === 0">Can't find your card? Tell us about it</a>
     </div>
 </form>

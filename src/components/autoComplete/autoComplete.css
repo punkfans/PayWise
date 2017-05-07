@@ -8,3 +8,17 @@ div.list-group {
     padding-left: 10px;
     padding-right: 10px ;
 }
+
+div.list-group a.list-group-item:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+div.list-group a.list-group-item.active{
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+#autoCompleteForm {
+    margin-bottom: 10px;
+}

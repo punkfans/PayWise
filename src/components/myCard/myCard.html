@@ -1,4 +1,4 @@
-<div>
+<div class="my-card">
     <div class="my-card-container" ng-repeat="card in dataService.cards">
         <img class="card-image" src="{{::card.card_img}}">
         <h5 ng-click="openNewTab(card.card_url)">
@@ -9,12 +9,12 @@
     <!--TODO add animation when hover over the div, plus icon become larger and background blur-->
     <div class="my-card-container">
         <div class="add-card-container" ng-click="toggleEditMode()">
-            <img class="add-card-image" src="../../../images/plugSing.png">
+            <img class="add-card-image" src="../../../images/plusSign.png">
             <h5>Add</h5>
         </div>
     </div>
 
     <div class="auto-complete-container" ng-if="editMode" >
-        <auto-complete data="dataService.allCards"></auto-complete>
+        <auto-complete data="dataService.allCards" label="Please enter your card name"></auto-complete>
     </div>
 </div>
