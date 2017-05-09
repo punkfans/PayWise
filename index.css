@@ -31,3 +31,7 @@ li a:hover {
     background-color: darkgreen;
     color: white;
 }
+
+#toast-container > div {
+    opacity: 1!important;
+}

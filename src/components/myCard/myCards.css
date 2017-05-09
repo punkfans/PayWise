@@ -8,6 +8,27 @@ div.my-card-container {
     text-align: center;
     min-height: 100px;
     float: left;
+    position: relative;
+}
+
+div.my-card-container .image-container{
+    width: 80px;
+    margin: auto;
+}
+
+div.my-card-container p {
+    position: absolute;
+    left: 45px;
+    top: 15px;
+    color: red;
+}
+
+div.my-card-container p:hover {
+    cursor: pointer;
+}
+
+div.my-card-container img.halfOpacity{
+    opacity: 0.5;
 }
 
 div.my-card-container h5:hover{

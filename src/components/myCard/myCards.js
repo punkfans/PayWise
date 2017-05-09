@@ -7,6 +7,11 @@
 
     function myCardsController($scope, dataService, $http, $q) {
         $scope.dataService = dataService;
+        $scope.showDelete = [];
+
+        for(var i=0; i<12; i++) {
+            $scope.showDelete.push(false);
+        };
 
         $scope.openNewTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
@@ -14,6 +19,20 @@
 
         $scope.toggleEditMode = function() {
             $scope.editMode = !$scope.editMode;
+        };
+
+        $scope.mouseOverCard = function(index) {
+            $scope.showDelete[index] = true;
+        };
+
+        $scope.mouseLeaveCard = function(index) {
+            $scope.showDelete[index] = false;
+        };
+
+        $scope.deleteCard = function(index) {
+            //delete card locally
+            dataService.cards.splice(index,1);
+            //TODO delete from the AWS, show a toastr when delete successfully
         };
 
         $scope.addCard = function() {
@@ -26,7 +45,6 @@
             $http.post(url, postObj)
                 .then(function(data) {
                     console.log(data);
-                    //TODO toastr not working now..
                     toastr.success('card added!')
                 })
                 .catch(function(error) {
