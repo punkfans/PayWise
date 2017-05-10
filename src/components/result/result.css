@@ -8,7 +8,11 @@ h4.card-url-link:hover {
 }
 
 a {
-    text-decoration: none!important;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
 }
 
 ul.rewards-desc {
@@ -20,4 +24,19 @@ ul.rewards-desc {
 ul.rewards-desc li {
     display: list-item;
     margin-bottom: 5px;
+}
+
+div.no-card-container {
+    margin-left: 26px;
+    margin-top: 20px;
+}
+
+div.no-card-container span.glyphicon{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+div.no-card-container span{
+    font-size: 15px;
+    vertical-align: middle;
 }

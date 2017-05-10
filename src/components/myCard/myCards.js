@@ -5,7 +5,7 @@
     angular.module('app')
         .controller('myCardsController', myCardsController);
 
-    function myCardsController($scope, dataService, $http, $q) {
+    function myCardsController($scope, dataService, $http, $timeout) {
         $scope.dataService = dataService;
         $scope.showDelete = [];
 
@@ -19,6 +19,11 @@
 
         $scope.toggleEditMode = function() {
             $scope.editMode = !$scope.editMode;
+            if($scope.editMode) {
+                $timeout(function() {
+                    $('#addCard').focus();
+                },100);
+            }
         };
 
         $scope.mouseOverCard = function(index) {
@@ -30,22 +35,31 @@
         };
 
         $scope.deleteCard = function(index) {
-            //delete card locally
-            dataService.cards.splice(index,1);
-            //TODO delete from the AWS, show a toastr when delete successfully
+            //TODO change user_id to dynamic ones
+            var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards?user_id=' + dataService.userId + '&card_name=' + dataService.cards[index].card_name;
+            $http.delete(url)
+                .then(function(deletedCard) {
+                    //delete card locally
+                    dataService.cards.splice(index,1);
+                    toastr.success(deletedCard.data.card_name + ' deleted');
+                })
+                .catch(function(error) {
+                    console.log(error)
+                });
         };
 
         $scope.addCard = function() {
             var postObj = {
-                user_id: 10001,
+                user_id: dataService.userId,
                 card_name: dataService.addedCard
             };
             var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards';
 
             $http.post(url, postObj)
-                .then(function(data) {
-                    console.log(data);
-                    toastr.success('card added!')
+                .then(function(addedCard) {
+                    //update my cards shown on the page
+                    dataService.cards.push(addedCard.data);
+                    toastr.success(addedCard.data.card_name + ' added!')
                 })
                 .catch(function(error) {
                     console.log(error);

@@ -31,5 +31,7 @@
     mainController.$inject = ['$scope'];
     function mainController($scope) {
         var vm = this;
+        //add close button for toastr
+        toastr.options.closeButton = true;
     }
 })();

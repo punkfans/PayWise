@@ -25,5 +25,11 @@
             </div>
         </div>
     </div>
+    <div class="no-card-container" ng-if="dataService.cards.length === 0">
+        <span class="glyphicon glyphicon-credit-card"></span>
+        <span>
+            Opps, you need to <a ng-click="goToMycard()">add a card</a> and come back
+        </span>
+    </div>
 </div>
 <!--todo add a fire icon indicating the best choice-->

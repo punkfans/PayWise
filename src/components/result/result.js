@@ -2,13 +2,18 @@
     angular.module('app')
         .controller('resultController', resultController);
 
-    resultController.$inject = ['$scope', '$q', 'dataService'];
-    function resultController($scope, $q, dataService) {
+    resultController.$inject = ['$scope', '$q', 'dataService', '$location'];
+    function resultController($scope, $q, dataService, $location) {
 
         $scope.dataService = dataService;
 
         $scope.openNewTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
+        };
+
+        $scope.goToMycard = function() {
+            //redirect to myCard
+            $location.path('/myCard');
         };
 
         //get user_id, set it if there is no user_id
@@ -25,7 +30,7 @@
         getDomain()
             .then(function(domain) {
                 //TODO: use dynamic user_id instead of hard coding
-                return getResult('10001', domain);
+                return getResult(dataService.userId, domain);
             })
             .then(function(cards) {
 
