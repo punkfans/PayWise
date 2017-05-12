@@ -33,5 +33,12 @@
         var vm = this;
         //add close button for toastr
         toastr.options.closeButton = true;
+
+        $scope.navBarItemActiveStatus = [true, false, false]; // rewards tab is by default activated
+        $scope.setActive = function(index) {
+            for(var i = 0; i < 3; i++) {
+                $scope.navBarItemActiveStatus[i] = i === index;
+            }
+        };
     }
 })();

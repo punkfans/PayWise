@@ -35,3 +35,8 @@ li a:hover {
 #toast-container > div {
     opacity: 1!important;
 }
+
+a.nav-bar-item-activated {
+    background-color: darkgreen;
+    color: white;
+}
