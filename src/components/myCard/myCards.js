@@ -24,6 +24,9 @@
                     $('#addCard').focus();
                 },100);
             }
+            $scope.submitting = false;
+            dataService.addedCard = '';
+            dataService.duplicateCard = false;
         };
 
         $scope.mouseOverCard = function(index) {
@@ -49,6 +52,18 @@
         };
 
         $scope.addCard = function() {
+
+            var myCard = dataService.cards.map(function(card) {
+                return card.card_name;
+            });
+
+            //check if the card already exists, if it does, return, show error
+            if(myCard.indexOf(dataService.addedCard) !== -1) {
+                dataService.duplicateCard = true;
+                return;
+            }
+
+            $scope.submitting = true;
             var postObj = {
                 user_id: dataService.userId,
                 card_name: dataService.addedCard
@@ -57,9 +72,10 @@
 
             $http.post(url, postObj)
                 .then(function(addedCard) {
-                    //update my cards shown on the page
+                    //update my cards shown on the page if it's not a duplicate
                     dataService.cards.push(addedCard.data);
-                    toastr.success(addedCard.data.card_name + ' added!')
+                    toastr.success(addedCard.data.card_name + ' added!');
+                    $scope.toggleEditMode();
                 })
                 .catch(function(error) {
                     console.log(error);

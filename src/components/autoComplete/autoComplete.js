@@ -78,6 +78,7 @@
                     resultLength = $scope.resultToShow.length;
                     $scope.showResults = true;
                     $scope.selected = false;
+                    $scope.resetDuplicateCardError();
                     $scope.$digest();
                 }
             }
@@ -106,6 +107,10 @@
         $scope.closeList = function() {
             $scope.showResults = false;
             $scope.avtiveItemIndex = -1;
-        }
+        };
+
+        $scope.resetDuplicateCardError = function() {
+            dataService.duplicateCard = false;
+        };
     }
 })();
