@@ -2,7 +2,7 @@
     <div class="my-card-container" ng-repeat="card in dataService.cards">
         <div class="image-container" ng-mouseover="mouseOverCard($index)" ng-mouseleave="mouseLeaveCard($index)">
             <img class="card-image" ng-class="{'halfOpacity': showDelete[$index]}" src="{{::card.card_img}}">
-            <p ng-if="showDelete[$index]" ng-click="deleteCard($index)">Delete</p>
+            <p ng-if="showDelete[$index]" class="glyphicon glyphicon-remove-circle" ng-click="deleteCard($index)"></p>
         </div>
         <h5 ng-click="openNewTab(card.card_url)">
             {{::card.card_name}}

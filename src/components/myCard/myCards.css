@@ -18,9 +18,12 @@ div.my-card-container .image-container{
 
 div.my-card-container p {
     position: absolute;
-    left: 45px;
-    top: 15px;
+    left: 96px;
+    top: -7px;
     color: red;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 50%;
 }
 
 div.my-card-container p:hover {
