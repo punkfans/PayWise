@@ -11,7 +11,7 @@
 
         for(var i=0; i<12; i++) {
             $scope.showDelete.push(false);
-        };
+        }
 
         $scope.openNewTab = function(cardUrl) {
             chrome.tabs.create({ url: cardUrl });
