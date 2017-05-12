@@ -40,3 +40,19 @@ div.no-card-container span{
     font-size: 15px;
     vertical-align: middle;
 }
+
+span.percentage-container {
+    display: inline-block;
+    padding: 2px;
+    color: white;
+    border-radius: 15%;
+    margin-right: 5px;
+}
+
+span.green-background {
+    background-color: green;
+}
+
+span.red-background {
+    background-color: red;
+}

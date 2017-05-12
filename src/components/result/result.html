@@ -3,7 +3,10 @@
         <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
-                    {{card.reward | percentage}} {{::card.card_name}}
+                    <span class="percentage-container" ng-class="dataService.cardStatus[$index] ? 'red-background' : 'green-background'">
+                        {{card.reward | percentage}}
+                    </span>
+                    {{::card.card_name}}
                 </a>
             </h4>
         </div>
