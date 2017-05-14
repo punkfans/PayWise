@@ -27,6 +27,10 @@ li a:active {
     background-color: darkgreen;
 }
 
+li a:focus {
+    outline: none;
+}
+
 li a:hover {
     background-color: darkgreen;
     color: white;
