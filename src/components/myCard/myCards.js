@@ -8,6 +8,8 @@
     function myCardsController($scope, dataService, $http, $timeout) {
         $scope.dataService = dataService;
         $scope.showDelete = [];
+        getMyCards();
+        getAllCards();
 
         for(var i=0; i<12; i++) {
             $scope.showDelete.push(false);
@@ -39,11 +41,11 @@
 
         $scope.deleteCard = function(index) {
             //TODO change user_id to dynamic ones
-            var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards?user_id=' + dataService.userId + '&card_name=' + dataService.cards[index].card_name;
+            var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards?user_id=' + dataService.userId + '&card_name=' + dataService.myCards[index].card_name;
             $http.delete(url)
                 .then(function(deletedCard) {
                     //delete card locally
-                    dataService.cards.splice(index,1);
+                    dataService.myCards.splice(index,1);
                     toastr.success(deletedCard.data.card_name + ' deleted');
                 })
                 .catch(function(error) {
@@ -53,7 +55,7 @@
 
         $scope.addCard = function() {
 
-            var myCard = dataService.cards.map(function(card) {
+            var myCard = dataService.myCards.map(function(card) {
                 return card.card_name;
             });
 
@@ -73,7 +75,7 @@
             $http.post(url, postObj)
                 .then(function(addedCard) {
                     //update my cards shown on the page if it's not a duplicate
-                    dataService.cards.push(addedCard.data);
+                    dataService.myCards.push(addedCard.data);
                     toastr.success(addedCard.data.card_name + ' added!');
                     $scope.toggleEditMode();
                 })
@@ -82,12 +84,21 @@
                 });
         };
 
-        getAllCards();
-
         function getAllCards() {
             $http.get('https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/cards')
                 .then(function(response) {
                     dataService.allCards = response.data;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+
+        function getMyCards() {
+            $http.get('https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards?user_id=' + dataService.userId)
+                .then(function(response) {
+                    console.log(response);
+                    dataService.myCards = response.data;
                 })
                 .catch(function(error) {
                     console.log(error);
