@@ -24,14 +24,15 @@
 		<script src="src/services/dataService.js"></script>
 		<script src="src/components/myCard/myCards.js"></script>
 		<script src="src/components/autoComplete/autoComplete.js"></script>
+		<script src="src/components/feedBack/feedBack.js"></script>
 	</head>
 	<body ng-app="app" ng-controller="main">
 		<div class="app-container">
 			<div class="nav-bar-container">
-				<ul class="col-sm-12">
-					<li class="col-sm-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[0]}" ng-click="setActive(0)" href="#/result">Rewards</a></li>
-					<li class="col-sm-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[1]}" ng-click="setActive(1)" href="#/myCard">My Cards</a></li>
-					<li class="col-sm-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[2]}" ng-click="setActive(2)" href="#/feedBack">Feed Back</a></li>
+				<ul class="col-xs-12">
+					<li class="col-xs-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[0]}" ng-click="setActive(0)" href="#/result">Rewards</a></li>
+					<li class="col-xs-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[1]}" ng-click="setActive(1)" href="#/myCard">My Cards</a></li>
+					<li class="col-xs-4"><a ng-class="{'nav-bar-item-activated' : navBarItemActiveStatus[2]}" ng-click="setActive(2)" href="#/feedBack">Feed Back</a></li>
 				</ul>
 			</div>
 			<ng-view></ng-view>

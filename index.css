@@ -1,5 +1,11 @@
 div.app-container {
     min-width: 400px;
+    display: inline-block;
+}
+
+div.nav-bar-container ul {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 ul {
@@ -8,11 +14,14 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: green;
+    margin-bottom: 10px;
 }
 
-li {
+ul li.col-xs-4 {
     float: left;
     display: inline;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 li a {

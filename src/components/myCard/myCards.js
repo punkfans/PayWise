@@ -97,7 +97,6 @@
         function getMyCards() {
             $http.get('https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/user-cards?user_id=' + dataService.userId)
                 .then(function(response) {
-                    console.log(response);
                     dataService.myCards = response.data;
                 })
                 .catch(function(error) {
