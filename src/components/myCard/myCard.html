@@ -23,7 +23,7 @@
         <div class="button-container">
             <button type="button" ng-click="addCard()" ng-disabled="submitting" class="btn btn-primary">
                 <span ng-if="!submitting">Submit</span>
-                <div ng-if="submitting" class="loader"></div>
+                <spinner ng-if="submitting"></spinner>
             </button>
             <button type="button" ng-mousedown="toggleEditMode()" class="btn btn-danger">Cancel</button>
         </div>

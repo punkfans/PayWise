@@ -1,4 +1,4 @@
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" ng-if="!pageNotSupported" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default" ng-repeat="card in dataService.cards">
         <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
             <h4 class="panel-title">
@@ -35,4 +35,28 @@
         </span>
     </div>
 </div>
-<!--todo add a fire icon indicating the best choice-->
+
+<!--page not supported page-->
+<div class="page-not-found" ng-if="pageNotSupported">
+    <div class="exclamation-sign-container">
+        <div ng-if="!submitted" class="glyphicon glyphicon-exclamation-sign"></div>
+        <div ng-if="submitted" class="glyphicon glyphicon-thumbs-up"></div>
+    </div>
+
+    <div class="exclamation-sign-container" ng-if="!submitted">
+        <div class="page-not-found-text">
+            Crap, <span class="domain-to-be-added">{{domain}}</span> is not supported yet
+        </div>
+    </div>
+
+    <div class="exclamation-sign-container">
+        <!--button and spinner-->
+        <div class="btn btn-success page-not-found-text" ng-if="!submitted">
+            <span ng-if="!submitting" ng-click="addDomain()">Help us add this domain</span>
+            <spinner ng-if="submitting"></spinner>
+        </div>
+        <div class="page-not-found-text" ng-if="submitted">
+            Thank You! Our developers will have this reviewed ASAP
+        </div>
+    </div>
+</div>

@@ -58,3 +58,25 @@ span.green-background {
 span.red-background {
     background-color: red;
 }
+
+div.page-not-found {
+    clear: both;
+}
+
+div.exclamation-sign-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+div.exclamation-sign-container div {
+    font-size: 60px;
+    margin: auto;
+}
+
+div.exclamation-sign-container div.page-not-found-text {
+    font-size: 14px;
+}
+
+span.domain-to-be-added {
+    color: #b52a2a;
+}

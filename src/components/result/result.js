@@ -2,8 +2,8 @@
     angular.module('app')
         .controller('resultController', resultController);
 
-    resultController.$inject = ['$scope', '$q', 'dataService', '$location'];
-    function resultController($scope, $q, dataService, $location) {
+    resultController.$inject = ['$scope', '$q', 'dataService', '$location', '$http'];
+    function resultController($scope, $q, dataService, $location, $http) {
 
         $scope.dataService = dataService;
 
@@ -14,6 +14,25 @@
         $scope.goToMycard = function() {
             //redirect to myCard
             $location.path('/myCard');
+        };
+
+        $scope.addDomain = function() {
+            $scope.submitting = true;
+            var postObj = {
+                type: 'domain',
+                domain: $scope.domain
+            };
+
+            var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/feedbacks';
+
+            $http.post(url, postObj)
+                .then(function() {
+                    $scope.submitting = false;
+                    $scope.submitted = true;
+                })
+                .catch(function(error) {
+                    console.log('post domain error: ' + error);
+                });
         };
 
         //get user_id, set it if there is no user_id
@@ -29,7 +48,6 @@
 
         getDomain()
             .then(function(domain) {
-                //TODO: use dynamic user_id instead of hard coding
                 return getResult(dataService.userId, domain);
             })
             .then(function(cards) {
@@ -90,9 +108,9 @@
                 var firstDotIndex = url.indexOf('.') + 1;
                 var slashIndex = url.slice(firstDotIndex).indexOf('/') + firstDotIndex + 1;
 
-                var domain = url.slice(firstDotIndex, slashIndex - 1);
+                $scope.domain = url.slice(firstDotIndex, slashIndex - 1);
 
-                defer.resolve(domain);
+                defer.resolve($scope.domain);
             });
 
             return defer.promise;
@@ -110,11 +128,14 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var resp = JSON.parse(xhr.responseText);
                     if(resp.errorMessage) {
-                        //TODO: refine the error msg to differentiate reason and show different page
                         defer.reject(resp.errorMessage);
                     }else {
                         defer.resolve(resp);
                     }
+                }else if(xhr.readyState == 4 && xhr.status == 400) {
+                    //page not supported
+                    $scope.pageNotSupported = true;
+                    $scope.$digest();
                 }
             };
             xhr.send();
