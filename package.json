@@ -1,5 +1,6 @@
 {
   "name": "cash-back-smarty",
+  "author": "Yuyang Wang <stevenyuyang@gmail.com>",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {},
