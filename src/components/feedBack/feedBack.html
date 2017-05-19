@@ -1,6 +1,23 @@
 <div>
-    <h4>
-        Have some suggestions for us? Email us@
-        test@test.com
-    </h4>
+    <div class="form-group">
+        <div>
+            <div>How do you like this app?</div>
+            <img ng-repeat="img in images" src="{{::img.url}}">
+        </div>
+
+        <div>
+            <label for="comment">What do you like to share with us?</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+
+        <div>
+            <label for="usr">Email (Optional)</label>
+            <input type="text" class="form-control" id="usr">
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
 </div>
