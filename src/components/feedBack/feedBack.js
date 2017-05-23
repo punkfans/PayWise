@@ -6,6 +6,8 @@
 
     function feedBackController($scope) {
 
+        var rating;
+
         $scope.images = [
             {
                 url: 'src/img/1.svg',
@@ -33,5 +35,24 @@
                 halfOpacity: false
             }
         ];
+
+        $scope.rate = function(index) {
+            angular.forEach($scope.images, function(image, idx) {
+                image.halfOpacity = !(idx === index);
+            });
+
+            rating = index + 1;
+        };
+
+        $scope.submitFeedBack = function() {
+            var postObj = {
+                rating: rating,
+                message: $scope.comment,
+                email: $scope.email,
+                type: 'rating'
+            };
+            //TODO post it to backend
+            console.log(postObj);
+        };
     }
 })();

@@ -1,22 +1,26 @@
-<div>
+<div class="feed-back-container">
     <div class="form-group">
-        <div>
-            <div>How do you like this app?</div>
-            <img ng-repeat="img in images" src="{{::img.url}}">
+        <div class="emoji-container bottom-margin">
+            <div class="text-center">
+                <h4>How do you like this app?</h4>
+            </div>
+            <div class="text-center">
+                <img ng-repeat="img in images" ng-class="{halfOpacity : img.halfOpacity}" ng-src="{{::img.url}}" ng-click="rate($index)">
+            </div>
         </div>
 
-        <div>
+        <div class="bottom-margin">
             <label for="comment">What do you like to share with us?</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+            <textarea class="form-control" rows="5" id="comment" ng-model="comment"></textarea>
         </div>
 
-        <div>
-            <label for="usr">Email (Optional)</label>
-            <input type="text" class="form-control" id="usr">
+        <div class="bottom-margin">
+            <label for="email">Email (Optional)</label>
+            <input type="text" class="form-control" id="email" ng-model="email">
         </div>
 
-        <div>
-            <button type="button" class="btn btn-success">Submit</button>
+        <div class="bottom-margin">
+            <button type="button" class="btn btn-success" ng-click="submitFeedBack()">Submit</button>
         </div>
     </div>
 

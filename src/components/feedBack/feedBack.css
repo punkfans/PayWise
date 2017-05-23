@@ -1,0 +1,21 @@
+div.feed-back-container {
+    clear: both;
+    padding-top: 5px;
+}
+
+div.bottom-margin {
+    margin-bottom: 15px;
+}
+
+div.emoji-container img {
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+div.emoji-container img.halfOpacity {
+    opacity: 0.5;
+}
+
+div.emoji-container img:hover {
+    cursor: pointer;
+}
