@@ -4,7 +4,7 @@
     angular.module('app')
         .controller('feedBackController', feedBackController);
 
-    function feedBackController($scope) {
+    function feedBackController($scope, $http) {
 
         var rating;
 
@@ -51,8 +51,15 @@
                 email: $scope.email,
                 type: 'rating'
             };
-            //TODO post it to backend
-            console.log(postObj);
+
+            var url = 'https://m8n05huk4i.execute-api.us-east-1.amazonaws.com/dev/feedbacks';
+            $scope.submitting = true;
+
+            $http.post(url, postObj)
+                .then(function() {
+                    $scope.submitted = true;
+                });
+
         };
     }
 })();
