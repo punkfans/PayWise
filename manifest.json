@@ -3,7 +3,8 @@
 
   "name": "Pay Wise",
   "description": "This extension shows which card you should use to get max cash back",
-  "version": "0.1",
+  "version": "1.0.0",
+  "author": "Yuyang Wang <stevenyuayng@gmail.com>",
 
   "browser_action": {
     "default_icon": "./images/dollarSign.png",

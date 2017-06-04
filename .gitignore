@@ -5,6 +5,9 @@
 # dependencies
 /node_modules
 
+# dist
+/dist
+
 # IDEs and editors
 /.idea
 .project
