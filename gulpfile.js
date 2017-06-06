@@ -58,6 +58,12 @@ gulp.task('manifest', function() {
     .pipe(gulp.dest('dist'))
 });
 
-gulp.task('build', ['concat', 'img', 'image', 'manifest'], function() {
+gulp.task('font', function() {
+    return gulp
+        .src('node_modules/bootstrap/dist/fonts/*')
+        .pipe(gulp.dest('dist/fonts'));
+});
+
+gulp.task('build', ['concat', 'img', 'image', 'manifest', 'font'], function() {
     gutil.log('building...')
-})
+});
