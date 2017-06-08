@@ -8,12 +8,14 @@ var htmlmin = require('gulp-htmlmin');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var gutil = require('gulp-util');
+var cssmin = require('gulp-cssmin');
 
 gulp.task('index', function() {
     return gulp
     .src('index.html')
     .pipe(useref())
     .pipe(gulpif('*.js', ngAnnotate()))
+    .pipe(gulpif('*.min.css', cssmin()))
     .pipe(gulp.dest('dist'));
 });
 
@@ -54,7 +56,7 @@ gulp.task('image', function() {
 
 gulp.task('manifest', function() {
     return gulp
-    .src('manifest.json')
+    .src(['manifest.json', 'getDomain.js'])
     .pipe(gulp.dest('dist'))
 });
 
