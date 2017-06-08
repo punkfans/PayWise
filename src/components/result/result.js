@@ -101,16 +101,20 @@
         function getDomain() {
             var defer = $q.defer();
             chrome.tabs.query({
-                active: true
+                active: true,
+                currentWindow: true
             }, function(tabs) {
-                $scope.tabs = tabs;
-                var url = tabs[0].url;
-                var firstDotIndex = url.indexOf('.') + 1;
-                var slashIndex = url.slice(firstDotIndex).indexOf('/') + firstDotIndex + 1;
+                chrome.tabs.sendMessage(tabs[0].id, {getDomain: ""}, function(response) {
+                    var url = response.hostName;
+                    if(url.match(/\./g).length > 1) {
+                        var firstDotIndex = url.indexOf('.');
+                        $scope.domain = url.slice(firstDotIndex+1);
+                    }else {
+                        $scope.domain = url;
+                    }
 
-                $scope.domain = url.slice(firstDotIndex, slashIndex - 1);
-
-                defer.resolve($scope.domain);
+                    defer.resolve($scope.domain);
+                });
             });
 
             return defer.promise;
