@@ -2,8 +2,8 @@
     angular.module('app')
         .controller('resultController', resultController);
 
-    resultController.$inject = ['$scope', '$q', 'dataService', '$location', '$http'];
-    function resultController($scope, $q, dataService, $location, $http) {
+    resultController.$inject = ['$scope', '$q', 'dataService', '$location', '$http', 'navBarService'];
+    function resultController($scope, $q, dataService, $location, $http, navBarService) {
 
         $scope.dataService = dataService;
 
@@ -14,6 +14,7 @@
         $scope.goToMycard = function() {
             //redirect to myCard
             $location.path('/myCard');
+            navBarService.setActive(1);
         };
 
         $scope.addDomain = function() {
@@ -138,6 +139,7 @@
                     }
                 }else if(xhr.readyState == 4 && xhr.status == 400) {
                     //page not supported
+                    defer.reject('page not supported');
                     $scope.pageNotSupported = true;
                     $scope.$digest();
                 }
@@ -149,12 +151,16 @@
 
         function determineShownCardIndex(cards) {
             dataService.cardStatus = [];
-            var valueArray = cards.map(function(card) {
-                return card.reward;
-            });
+            if(cards instanceof Array) {
+                var valueArray = cards.map(function(card) {
+                    return card.reward;
+                });
 
-            for(var i=0; i<valueArray.length; i++) {
-                dataService.cardStatus.push(valueArray[i] === valueArray[0]);
+                for(var i=0; i<valueArray.length; i++) {
+                    dataService.cardStatus.push(valueArray[i] === valueArray[0]);
+                }
+            }else {
+                $scope.noCardAvailable = true;
             }
         }
     }
