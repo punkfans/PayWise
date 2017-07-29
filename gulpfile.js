@@ -9,6 +9,7 @@ var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var gutil = require('gulp-util');
 var cssmin = require('gulp-cssmin');
+var del = require('del');
 
 gulp.task('index', function() {
     return gulp
@@ -42,7 +43,7 @@ gulp.task('concat', ['index', 'html'], function() {
 
 gulp.task('img', function() {
     return gulp
-    .src('src/img/*.svg')
+    .src('src/img/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/src/img'))
 });
@@ -66,6 +67,10 @@ gulp.task('font', function() {
         .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('build', ['concat', 'img', 'image', 'manifest', 'font'], function() {
+gulp.task('clean', function() {
+    del(['dist/*']);
+});
+
+gulp.task('build', ['clean', 'concat', 'img', 'image', 'manifest', 'font'], function() {
     gutil.log('building...')
 });

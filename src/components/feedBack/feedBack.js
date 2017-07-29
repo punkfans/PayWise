@@ -10,28 +10,18 @@
 
         $scope.images = [
             {
-                url: 'src/img/1.svg',
+                url: 'src/img/Sad.png',
                 value: 1,
                 halfOpacity: false
             },
             {
-                url: 'src/img/2.svg',
+                url: 'src/img/Confused.png',
                 value: 2,
                 halfOpacity: false
             },
             {
-                url: 'src/img/3.svg',
+                url: 'src/img/Happy.png',
                 value: 3,
-                halfOpacity: false
-            },
-            {
-                url: 'src/img/4.svg',
-                value: 4,
-                halfOpacity: false
-            },
-            {
-                url: 'src/img/5.svg',
-                value: 5,
                 halfOpacity: false
             }
         ];
