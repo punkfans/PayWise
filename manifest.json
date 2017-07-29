@@ -7,7 +7,7 @@
   "author": "Yuyang Wang <stevenyuayng@gmail.com>",
 
   "browser_action": {
-    "default_icon": "./images/dollarSign.png",
+    "default_icon": "./images/payWise.png",
     "default_popup": "index.html"
   },
   "content_scripts": [
