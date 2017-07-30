@@ -40,7 +40,6 @@
         if(!dataService.userId) {
             getUserId()
                 .then(function() {
-                    console.log(dataService.userId);
                     if(!dataService.userId) {
                         setUserId();
                     }
@@ -106,12 +105,20 @@
                 currentWindow: true
             }, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, {getDomain: ""}, function(response) {
-                    var url = response.hostName;
-                    if(url.match(/\./g).length > 1) {
-                        var firstDotIndex = url.indexOf('.');
-                        $scope.domain = url.slice(firstDotIndex+1);
-                    }else {
-                        $scope.domain = url;
+                    if(response) {
+                        var url = response.hostName;
+                        if(url.match(/\./g).length > 1) {
+                            var firstDotIndex = url.indexOf('.');
+                            $scope.domain = url.slice(firstDotIndex+1);
+                        }else {
+                            $scope.domain = url;
+                        }
+                    }else { //fall back solution for user who download the plugin and open it on a already loaded page without refreshing
+                        var url = tabs[0].url;
+                        var firstDotIndex = url.indexOf('.') + 1;
+                        var slashIndex = url.slice(firstDotIndex).indexOf('/') + firstDotIndex + 1;
+
+                        $scope.domain = url.slice(firstDotIndex, slashIndex - 1);
                     }
 
                     defer.resolve($scope.domain);
