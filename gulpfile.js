@@ -10,6 +10,7 @@ var concat = require('gulp-concat');
 var gutil = require('gulp-util');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
+var zip = require('gulp-zip');
 
 gulp.task('index', function() {
     return gulp
@@ -50,7 +51,7 @@ gulp.task('img', function() {
 
 gulp.task('image', function() {
     return gulp
-    .src('images/*.png')
+    .src('images/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/images'))
 });
@@ -69,6 +70,13 @@ gulp.task('font', function() {
 
 gulp.task('clean', function() {
     del(['dist/*']);
+});
+
+gulp.task('zip', ['build'], function() {
+    gulp
+        .src('dist/**/*')
+        .pipe(zip('payWise.zip'))
+        .pipe(gulp.dest('/Users/Yuyang_Wang/Desktop'));
 });
 
 gulp.task('build', ['clean', 'concat', 'img', 'image', 'manifest', 'font'], function() {
