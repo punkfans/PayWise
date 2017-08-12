@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Pay Wise",
+  "name": "PayWise",
   "description": "This extension shows which card you should use to get max cash back",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Yuyang Wang <stevenyuayng@gmail.com>",
 
   "browser_action": {
