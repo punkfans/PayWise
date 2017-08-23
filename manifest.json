@@ -3,7 +3,7 @@
 
   "name": "PayWise",
   "description": "This extension shows which card you should use to get max cash back",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Yuyang Wang <stevenyuayng@gmail.com>",
 
   "browser_action": {

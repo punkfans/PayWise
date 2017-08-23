@@ -5,7 +5,7 @@
                 <h4>How do you like this app?</h4>
             </div>
             <div class="text-center">
-                <img ng-repeat="img in images" ng-class="{halfOpacity : img.halfOpacity}" ng-src="{{::img.url}}" ng-click="rate($index)">
+                <img ng-repeat="img in images" ng-class="{halfOpacity : img.halfOpacity}" ng-src="{{::img.url}}" ng-mousemove="mouseOver($index)" ng-mouseleave="mouseLeave($index)" ng-click="rate($index)">
             </div>
         </div>
 
