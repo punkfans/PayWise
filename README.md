@@ -38,13 +38,4 @@ npm install
 
 This application make use of icons from the following authors
 
-* [Roundicons](https://roundicons.com/)
-* [Alfredo Hernandez](https://www.alfredocreates.com/)
-* [Kirill Kazachek](https://www.iconfinder.com/kirill.kazachek)
-* [Elias Bikbulatov](https://okodesign.ru)
-* [Iconnice](https://www.iconnice.com)
-* [Cursor Creative](https://www.flaticon.com/authors/cursor-creative)
-* [Freepik](https://www.freepik.com)
-* [Those Icons](https://www.flaticon.com/author/those-icons)
-* [Madebyoliver](https://www.smashicons.com)
-* [Icons8](https://www.icons8.com)
+* [glyphicons](http://glyphicons.com/)
