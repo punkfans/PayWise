@@ -1,0 +1,83 @@
+result {
+  .card-image {
+    width: 130px;
+  }
+
+  .card-url-link:hover {
+    color: deepskyblue;
+    cursor: pointer;
+  }
+
+  .rewards-desc {
+    background-color: transparent;
+    list-style-type: disc;
+    padding-left: 20px;
+
+    li {
+      display: list-item;
+      margin-bottom: 5px;
+    }
+  }
+
+  .no-card-container {
+    margin-left: 26px;
+    margin-top: 20px;
+
+    span{
+      font-size: 15px;
+      vertical-align: middle;
+
+      &.glyphicon{
+        font-size: 20px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .percentage-container {
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 55px;
+    text-align: center;
+  }
+
+  .green-background {
+    background-color: green;
+  }
+
+  .red-background {
+    background-color: red;
+  }
+
+  .page-not-found {
+    clear: both;
+  }
+
+  .exclamation-sign-container {
+    display: flex;
+    margin-bottom: 10px;
+
+    div {
+      font-size: 60px;
+      margin: auto;
+
+      &.page-not-found-text {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .domain-to-be-added {
+    color: #b52a2a;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
