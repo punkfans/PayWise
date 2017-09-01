@@ -11,6 +11,7 @@ var gutil = require('gulp-util');
 var cssmin = require('gulp-cssmin');
 var del = require('del');
 var zip = require('gulp-zip');
+var sass = require('gulp-sass');
 
 gulp.task('index', function() {
     return gulp
@@ -19,6 +20,13 @@ gulp.task('index', function() {
     .pipe(gulpif('*.js', ngAnnotate()))
     .pipe(gulpif('*.min.css', cssmin()))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('sass', function() {
+    return gulp
+        .src(['*.scss', 'src/**/*.scss'])
+        .pipe(sass()).on('error', sass.logError)
+        .pipe(gulp.dest('src/css'));
 });
 
 gulp.task('html', function() {

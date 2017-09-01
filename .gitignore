@@ -8,6 +8,9 @@
 # dist
 /dist
 
+# css folder
+/src/css
+
 # IDEs and editors
 /.idea
 .project
