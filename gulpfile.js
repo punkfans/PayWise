@@ -29,6 +29,13 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('src/css'));
 });
 
+gulp.task('createAppCss', ['sass'], function() {
+    return gulp
+        .src(['src/css/*.css', 'src/css/**/*.css'])
+        .pipe(concat('app.css'))
+        .pipe(gulp.dest('src'))
+});
+
 gulp.task('html', function() {
     return gulp
     .src('src/components/**/*.html')
