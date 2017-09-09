@@ -13,7 +13,9 @@ var del = require('del');
 var zip = require('gulp-zip');
 var sass = require('gulp-sass');
 
-gulp.task('index', function() {
+
+//once css file is generated, do the concat and minification
+gulp.task('index', ['createAppCss'], function() {
     return gulp
     .src('index.html')
     .pipe(useref())
@@ -22,6 +24,9 @@ gulp.task('index', function() {
     .pipe(gulp.dest('dist'));
 });
 
+
+//compile scss file to css files and put them in the css
+//folder with the same folder structure
 gulp.task('sass', function() {
     return gulp
         .src(['*.scss', 'src/**/*.scss'])
@@ -29,11 +34,14 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('src/css'));
 });
 
+
+//concat all the css file (compiled from sass task) together as app.css
+// which will be referenced in index.html
 gulp.task('createAppCss', ['sass'], function() {
     return gulp
         .src(['src/css/*.css', 'src/css/**/*.css'])
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('src'))
+        .pipe(gulp.dest('./'))
 });
 
 gulp.task('html', function() {
