@@ -1,7 +1,15 @@
-feedBack {
+feed-back {
   .feed-back-container {
     clear: both;
     padding-top: 5px;
+  }
+
+  div {
+    &.form-group {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 0px;
+    }
   }
 
   .bottom-margin {

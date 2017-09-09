@@ -1,62 +1,64 @@
-<div class="panel-group" ng-if="!pageNotSupported" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default" ng-repeat="card in dataService.cards">
-        <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+<result>
+    <div class="panel-group" ng-if="!pageNotSupported" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" ng-repeat="card in dataService.cards">
+            <div class="panel-heading" role="tab" ng-attr-id="headingTwo{{$index}}">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" ng-attr-href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
                     <span class="percentage-container" ng-class="dataService.cardStatus[$index] ? 'red-background' : 'green-background'">
                         {{card.reward | percentage}}
                     </span>
-                    {{::card.card_name}}
-                </a>
-            </h4>
-        </div>
-        <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : dataService.cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-                <div class="media">
-                    <div class="media-left">
-                        <img class="media-object card-image" ng-src="{{::card.card_img}}" alt="...">
-                    </div>
-                    <div class="media-body">
-                        <h4 ng-click="openNewTab(card.card_url)" class="media-heading card-url-link">{{::card.card_name}}</h4>
-                        <div>
-                            <ul class="rewards-desc">
-                                <li ng-repeat="reward in card.rewards_desc">{{reward}}</li>
-                            </ul>
+                        {{::card.card_name}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{{$index}}" class="panel-collapse collapse" ng-class="{'in' : dataService.cardStatus[$index]}" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <img class="media-object card-image" ng-src="{{::card.card_img}}" alt="...">
+                        </div>
+                        <div class="media-body">
+                            <h4 ng-click="openNewTab(card.card_url)" class="media-heading card-url-link">{{::card.card_name}}</h4>
+                            <div>
+                                <ul class="rewards-desc">
+                                    <li ng-repeat="reward in card.rewards_desc">{{reward}}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="no-card-container" ng-if="noCardAvailable">
-        <span class="glyphicon glyphicon-credit-card"></span>
-        <span>
+        <div class="no-card-container" ng-if="noCardAvailable">
+            <span class="glyphicon glyphicon-credit-card"></span>
+            <span>
             Opps, you need to <a ng-click="goToMycard()">add a card</a> and come back
         </span>
-    </div>
-</div>
-
-<!--page not supported page-->
-<div class="page-not-found" ng-if="pageNotSupported">
-    <div class="exclamation-sign-container">
-        <div ng-if="!submitted" class="glyphicon glyphicon-exclamation-sign"></div>
-        <div ng-if="submitted" class="glyphicon glyphicon-thumbs-up"></div>
-    </div>
-
-    <div class="exclamation-sign-container" ng-if="!submitted">
-        <div class="page-not-found-text">
-            oops, <span class="domain-to-be-added">{{domain}}</span> is not supported yet
         </div>
     </div>
 
-    <div class="exclamation-sign-container">
-        <!--button and spinner-->
-        <div class="btn btn-success page-not-found-text" ng-if="!submitted">
-            <span ng-if="!submitting" ng-click="addDomain()">Help us add this domain</span>
-            <spinner ng-if="submitting"></spinner>
+    <!--page not supported page-->
+    <div class="page-not-found" ng-if="pageNotSupported">
+        <div class="exclamation-sign-container">
+            <div ng-if="!submitted" class="glyphicon glyphicon-exclamation-sign"></div>
+            <div ng-if="submitted" class="glyphicon glyphicon-thumbs-up"></div>
         </div>
-        <div class="page-not-found-text" ng-if="submitted">
-            Thank You! Our developers will have this reviewed ASAP
+
+        <div class="exclamation-sign-container" ng-if="!submitted">
+            <div class="page-not-found-text">
+                oops, <span class="domain-to-be-added">{{domain}}</span> is not supported yet
+            </div>
+        </div>
+
+        <div class="exclamation-sign-container">
+            <!--button and spinner-->
+            <div class="btn btn-success page-not-found-text" ng-if="!submitted">
+                <span ng-if="!submitting" ng-click="addDomain()">Help us add this domain</span>
+                <spinner ng-if="submitting"></spinner>
+            </div>
+            <div class="page-not-found-text" ng-if="submitted">
+                Thank You! Our developers will have this reviewed ASAP
+            </div>
         </div>
     </div>
-</div>
+</result>

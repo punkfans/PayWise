@@ -1,31 +1,33 @@
-<div class="feed-back-container">
-    <div class="form-group">
-        <div class="emoji-container bottom-margin">
-            <div class="text-center">
-                <h4>How do you like this app?</h4>
+<feed-back>
+    <div class="feed-back-container">
+        <div class="form-group">
+            <div class="emoji-container bottom-margin">
+                <div class="text-center">
+                    <h4>How do you like this app?</h4>
+                </div>
+                <div class="text-center">
+                    <img ng-repeat="img in images" ng-class="{halfOpacity : img.halfOpacity}" ng-src="{{::img.url}}" ng-mousemove="mouseOver($index)" ng-mouseleave="mouseLeave($index)" ng-click="rate($index)">
+                </div>
             </div>
-            <div class="text-center">
-                <img ng-repeat="img in images" ng-class="{halfOpacity : img.halfOpacity}" ng-src="{{::img.url}}" ng-mousemove="mouseOver($index)" ng-mouseleave="mouseLeave($index)" ng-click="rate($index)">
+
+            <div class="bottom-margin">
+                <label for="comment">What do you like to share with us?</label>
+                <textarea class="form-control" rows="5" id="comment" ng-model="comment"></textarea>
+            </div>
+
+            <div class="bottom-margin">
+                <label for="email">Email (Optional)</label>
+                <input type="text" class="form-control" id="email" ng-model="email">
+            </div>
+
+            <div class="bottom-margin">
+                <button type="button" ng-click="submitFeedBack()" ng-if="!submitted" ng-disabled="submitting" class="btn btn-primary">
+                    <span ng-if="!submitting">Submit</span>
+                    <spinner ng-if="submitting"></spinner>
+                </button>
+                <label ng-if="submitted">Thank you!</label>
             </div>
         </div>
 
-        <div class="bottom-margin">
-            <label for="comment">What do you like to share with us?</label>
-            <textarea class="form-control" rows="5" id="comment" ng-model="comment"></textarea>
-        </div>
-
-        <div class="bottom-margin">
-            <label for="email">Email (Optional)</label>
-            <input type="text" class="form-control" id="email" ng-model="email">
-        </div>
-
-        <div class="bottom-margin">
-            <button type="button" ng-click="submitFeedBack()" ng-if="!submitted" ng-disabled="submitting" class="btn btn-primary">
-                <span ng-if="!submitting">Submit</span>
-                <spinner ng-if="submitting"></spinner>
-            </button>
-            <label ng-if="submitted">Thank you!</label>
-        </div>
     </div>
-
-</div>
+</feed-back>
